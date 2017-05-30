@@ -1,0 +1,6 @@
+ps -ylC httpd | awk '{x += $8;y += 1} END {print "Apache Memory Usage (MB): "x/1024; print "Average Proccess Size (MB): "x/((y-1)*1024)}'
+
+
+# -y ---> show RSS(real memory size or resident set size in 1024 byte units) instead of addr
+# awk prints 8th field ,ie RSS and adds one by one to x variable,y increments from 1.
+#
