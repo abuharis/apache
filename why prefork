@@ -1,0 +1,9 @@
+Why prefork
+
+Despite MPM worker being more efficient than MPM prefork when the server is under heavy load, it is usually not installed that way because mod_php can't work with MPM worker.
+
+We need to know a little bit about how you can execute PHP code when working with Apache.
+
+The most common way is with mod_php which is an Apache module capable to understand and execute PHP code inside Apache itself. This is the most common way to run PHP under Apache.
+
+But there is another way, which is similar to what Nginx does, and that is having PHP interpreted as CGI, which means that Apache is going to forward PHP to an external interpreter and get the result back. Using this method allows you to keep Apache configured to run in worker MPM mode, and still be able to "understand" PHP.
